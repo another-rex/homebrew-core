@@ -16,10 +16,10 @@ class OsvScanner < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "f141d30fd9a18e3d006c157ca31a40d7f665ae22dde413c1c13089bb83f07cca"
   end
 
-  depends_on "go" => :build
+  depends_on "goreleaser" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "./cmd/osv-scanner"
+    system "goreleaser", "build", "--rm-dist", "--single-target"
   end
 
   test do
